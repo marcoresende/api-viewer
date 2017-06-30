@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content teste</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<style>
+	    /* Remove the navbar's default margin-bottom and rounded borders */ 
+	    .navbar {
+	      margin-bottom: 0;
+	      border-radius: 0;
+	    }
+	    
+	    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+	    .row.content {height: 450px}
+	    
+	    /* Set gray background color and 100% height */
+	    .sidenav {
+	      padding-top: 20px;
+	      background-color: #f1f1f1;
+	      height: 100%;
+	    }
+	    
+	    /* Set black background color, white text and some padding */
+	    footer {
+	      background-color: #555;
+	      color: white;
+	      padding: 15px;
+	    }
+	    
+	    /* On small screens, set height to 'auto' for sidenav and grid */
+	    @media screen and (max-width: 767px) {
+	      .sidenav {
+	        height: auto;
+	        padding: 15px;
+	      }
+	      .row.content {height:auto;} 
+	    }
+	    
+	    /* .btn-primary {
+		    color: #fff;
+		    background-color: #828282;
+		    border-color: #5f5f5f;
+		} */
+	    
+	    footer {
+	    	background-color: #89bf04;
+	    }
+	    .navbar.navbar-inverse{
+	    	background-color: #89bf04;
+    		border-color: #89bf04;
+	    }
+	    
+	    .glyphicon.glyphicon-sort{ 
+	    	cursor: pointer; 
+	    	cursor: hand; 
+	    	margin-left: 5px;
+	    	font-size: 12px;
+	    }
+	    
+	    .title-span {
+	    	font-weight: bold !important;
+	    }
+	 </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+<!--       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button> -->
+      <h2 style="color:white">Lista de APIs</h2>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+    <!--     <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Sobre</a></li> -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <table id="tblApi" class="table table-striped">
+		  <thead>
+		    <tr>
+		      <th onclick="sortTable(0, 'tblApi')">
+		      	<span class="title-span">Versão</span>
+		      	<span class="glyphicon glyphicon-sort"></span>
+		      </th>
+		      <th onclick="sortTable(1, 'tblApi')">
+		      	<span class="title-span">Nome</span>
+		      	<span class="glyphicon glyphicon-sort"></span>
+		      </th>
+		      <th onclick="sortTable(2, 'tblApi')">
+		      	<span class="title-span">Host</span>
+		      	<span class="glyphicon glyphicon-sort"></span>
+		      </th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="api: ${apis}">
+		      <td th:text="${api.version}" class="col-md-2"></td>
+		      <td th:text="${api.name}" class="col-md-4"></td>
+		      <td th:text="${api.host}" class="col-md-4"></td>
+		      <td class="col-md-2"><a th:href="@{'/api/{file}/{call}/'(file=${api.file}, call=${api.host})}" ><button type="button" class="btn btn-primary">Visualizar</button></a></td>
+		    </tr>
+		  </tbody>
+		</table>
+    </div>
+    <div class="col-sm-2 sidenav">
+
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+
+</footer>  
+<script src="/api-viewer/sortTable.js"> </script>
+</body>
+</html>
