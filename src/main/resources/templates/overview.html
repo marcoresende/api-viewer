@@ -3,7 +3,7 @@
 <head> 
     <title>Getting Started: Serving Web Content teste</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
+    <meta http-equiv="refresh" content="30" />
     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<style>
 	    /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -115,7 +115,7 @@
 		      <td th:text="${api.version}" class="col-md-2"></td>
 		      <td th:text="${api.name}" class="col-md-4"></td>
 		      <td th:text="${api.host}" class="col-md-4"></td>
-		      <td class="col-md-2"><a th:href="@{'/api/{file}/{call}/'(file=${api.file}, call=${api.host})}" ><button type="button" class="btn btn-primary">Visualizar</button></a></td>
+		      <td class="col-md-2"><a th:href="@{'/api/{file}/'(file=${api.file})}" ><button type="button" class="btn btn-primary">Visualizar</button></a></td>
 		    </tr>
 		  </tbody>
 		</table>
